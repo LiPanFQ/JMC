@@ -1,0 +1,1 @@
+import{_ as e,c as t,o}from"./index.49bbe3bb.js";const c={},r={id:"Software"};function a(_,n){return o(),t("div",r,"\u5927\u6570\u636E\u7BA1\u7406\u7CFB\u7EDF")}const f=e(c,[["render",a]]);export{f as default};
