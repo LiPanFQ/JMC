@@ -3,7 +3,7 @@
     <div class="row">
       <div id="left" class="col-md-4 col-xs-12">
         <ul class="left-container wow bounceInLeft">
-          <p>软件产品</p>
+          <p>五金产品</p>
           <li v-for="(item, index) in softwareList" :key="index">
             <router-link :to="item.path">{{ item.name }}</router-link>
           </li>
@@ -23,11 +23,11 @@ import { onMounted } from 'vue'
 const softwareList = [
   {
     path: '/software/smartTown',
-    name: '智能小镇管理系统'
+    name: '螺母'
   },
   {
     path: '/software/bigData',
-    name: '大数据管理系统'
+    name: '钉子'
   }
 ]
 onMounted(() => {

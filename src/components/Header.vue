@@ -12,13 +12,6 @@
         <div class="shejiao pull-right">
           <span class="glyphicon glyphicon-hand-right"></span>赶快联系我们吧！
           <span class="glyphicon glyphicon-hand-left"></span>
-
-          <a
-            href="https://github.com/neveryu"
-            target="_blank"
-            style="color: #fc5531; font-size: 18px; cursor: pointer"
-            >Github</a
-          >
         </div>
       </div>
     </div>
@@ -110,15 +103,15 @@ const navList = [
     children: []
   },
   {
-    name: '软件产品',
+    name: '五金产品',
     path: '/software',
     children: [
       {
-        name: '智能小镇管理系统',
+        name: '螺母',
         path: '/software/smartTown'
       },
       {
-        name: '大数据管理系统',
+        name: '钉子',
         path: '/software/bigData'
       }
     ]
@@ -129,18 +122,8 @@ const navList = [
     children: []
   },
   {
-    name: '新闻动态',
-    path: '/newsinformation',
-    children: []
-  },
-  {
     name: '公司介绍',
     path: '/companyintroduction',
-    children: []
-  },
-  {
-    name: '工作机会',
-    path: '/jobchance',
     children: []
   },
   {
