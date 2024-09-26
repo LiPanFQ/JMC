@@ -9,7 +9,6 @@
       <p>QQ群：<a style="color:#fff" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=ce9f5f0d1d7553fb5634521f79a89668ad0d798eb35047f93300df63ebae4c05">{{ qqgroup }}</a></p>
     </p>
     <p class="email_wx">
-      <p>博客：<a :href='blog + "neveryu/"' style="color:#fff">{{ blog }}</a></p>
       <p>邮箱：{{ email }}</p>
       <p>公司QQ号：{{ qq }}</p>
     </p>
