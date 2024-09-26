@@ -7,7 +7,6 @@
   </div>
 </template>
 <script setup name="ContactUs">
-
 </script>
 
 <style scoped>
