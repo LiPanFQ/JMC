@@ -60,7 +60,7 @@
     <!-- 您身边的IT专家 -->
     <div id="contactUs" class="container-fuild text-center">
       <div class="container contactUs-container wow slideInUp">
-        <h1>您身边的IT专家</h1>
+        <h1>您身边的五金专家</h1>
         <h3>7x24小时提供出色的IT服务</h3>
         <button
           class="btn btn-default btn-sm"
