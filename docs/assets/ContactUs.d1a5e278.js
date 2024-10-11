@@ -1,1 +1,0 @@
-import{_ as c,c as n,d as t,o as s}from"./index.42c2d34e.js";const o={},a={id:"ContactUs"};function _(d,e){return s(),n("div",a,e[0]||(e[0]=[t("div",{class:"banner container-fuild text-center"},"\u8054\u7CFB\u6211\u4EEC",-1),t("div",null," 123 ",-1)]))}const i=c(o,[["render",_],["__scopeId","data-v-4ac2c79b"]]);export{i as default};
