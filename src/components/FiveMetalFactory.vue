@@ -52,14 +52,39 @@
       </section>
 
       <!-- 产品展示 -->
-      <section class="mb-12 sm:mb-16">
+      <section class="mb-12 sm:mb-16 product">
         <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">我们的产品</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          <div v-for="(product, index) in products" :key="index" class="bg-white rounded-lg shadow-md p-4 transition-transform duration-300 ease-in-out transform hover:scale-105">
-            <img :src="product.image" alt="Product Image" class="bg-gray-200 rounded-lg h-24 sm:h-32 mb-3 sm:mb-4 object-cover" />
-            <p class="text-center text-sm sm:text-base font-semibold">{{ product.name }}</p>
-          </div>
-        </div>
+        <Swiper
+          :slides-per-view="3"
+          :space-between="30"
+          effect="coverflow"
+          :centeredSlides="true"
+          :loop="true"
+          :coverflow-effect="{
+            rotate: 60,
+            stretch: -20,
+            depth: 200,
+            modifier: 1,
+            slideShadows: true
+          }"
+          :pagination="false"
+          class="swiper-container"
+        >
+          <SwiperSlide
+            v-for="(product, index) in products"
+            :key="index"
+            class="bg-white rounded-lg shadow-md p-4 transition-transform duration-300 ease-in-out transform hover:scale-105"
+          >
+            <img
+              :src="product.image"
+              alt="Product Image"
+              class="bg-gray-200 rounded-lg h-32 sm:h-48 mb-3 sm:mb-4 object-cover"
+            />
+            <p class="text-center text-sm sm:text-base font-semibold">
+              {{ product.name }}
+            </p>
+          </SwiperSlide>
+        </Swiper>
       </section>
 
       <!-- 联系我们 -->
@@ -91,7 +116,14 @@
 
 <script setup>
 import { ref } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.min.css'; // 引入样式
+import 'swiper/swiper.min.css';
+import SwiperCore, { EffectCoverflow, Pagination } from 'swiper';
 import { Wrench, Zap, Shield, Phone as PhoneIcon, Menu as MenuIcon } from 'lucide-vue-next';
+
+// 初始化 Swiper 模块
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 const companyname = import.meta.env.VITE_APP_COMPANYNAME
 const features = ref([
@@ -119,5 +151,24 @@ const toggleMobileMenu = () => {
 /* 可以在这里添加任何额外的组件特定样式 */
 .sticky{
   z-index: 999;
+}
+.swiper-container {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-slide {
+  transition: transform 0.8s;
+}
+
+.swiper-slide-active {
+  transform: scale(1.1);
+}
+
+.product{
+  -webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 </style>
