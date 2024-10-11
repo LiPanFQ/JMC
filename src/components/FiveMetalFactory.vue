@@ -29,12 +29,15 @@
     <!-- 主要内容 -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <!-- 英雄区域 -->
-      <section class="text-center mb-12 sm:mb-16">
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">专业五金制造商</h1>
-        <p class="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">品质卓越 · 技术创新 · 服务至上</p>
-        <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
-          了解更多
-        </button>
+      <section class="text-center mb-12 sm:mb-16 relative p-4">
+        <img src="/images/backgroundImg.webp" alt="背景图" class="absolute inset-0 w-full h-full object-cover opacity-1">
+        <div class="relative z-10">
+          <h1 class="text-4xl sm:text-5xl text-white font-bold mb-4">专业五金制造商</h1>
+          <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8">品质卓越 · 技术创新 · 服务至上</p>
+          <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+            了解更多
+          </button>
+        </div>
       </section>
 
       <!-- 产品特点 -->
@@ -63,10 +66,10 @@
       <section class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl p-6 sm:p-8 text-white text-center">
         <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">联系我们</h2>
         <p class="text-base sm:text-xl mb-5 sm:mb-6">让我们为您的项目提供最佳五金解决方案</p>
-        <button class="bg-white text-blue-600 hover:bg-gray-100 rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+        <a href="tel:+8617683892175" class="bg-white text-blue-600 hover:bg-gray-100 rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
           <phone-icon class="w-5 h-5 inline-block mr-2" />
           立即咨询
-        </button>
+        </a>
       </section>
     </main>
 
@@ -98,10 +101,10 @@ const features = ref([
 ]);
 
 const products = ref([
-  { name: "精密螺丝", image: "/images/product.webp" },
-  { name: "高强度螺母", image: "/images/product.webp" },
-  { name: "特种垫圈", image: "/images/product.webp" },
-  { name: "定制连接件", image: "/images/product.webp" }
+  { name: "铆钉", image: "/images/product.webp" },
+  { name: "螺钉", image: "/images/product.webp" },
+  { name: "螺栓", image: "/images/product.webp" },
+  { name: "非标铆钉螺丝", image: "/images/product.webp" }
 ]);
 
 
@@ -114,4 +117,7 @@ const toggleMobileMenu = () => {
 
 <style scoped>
 /* 可以在这里添加任何额外的组件特定样式 */
+.sticky{
+  z-index: 999;
+}
 </style>
