@@ -1,12 +1,12 @@
 <template>
   <div id="footer" class="container-fluid">
-    <p class="address_tel_fax">
+    <div class="address_tel_fax">
       <p>地址：{{ address }}</p>
-    </p>
-    <p class="email_wx">
+    </div>
+    <div class="email_wx">
       <p>邮箱：{{ email }}</p>
       <p>公司QQ号：{{ qq }}</p>
-    </p>
+    </div>
     <p class="copy">Copyright &copy; 2024 {{ company }}</p>
   </div>
 </template>

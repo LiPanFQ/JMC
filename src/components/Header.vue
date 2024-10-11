@@ -9,10 +9,7 @@
           <span class="glyphicon glyphicon-envelope"></span>{{ email }}
           <span class="glyphicon glyphicon-time"></span>7x24小时为您服务
         </div>
-        <div class="shejiao pull-right">
-          <span class="glyphicon glyphicon-hand-right"></span>赶快联系我们吧！
-          <span class="glyphicon glyphicon-hand-left"></span>
-        </div>
+        <el-button color="#626aef" style="float: right;">Default</el-button>
       </div>
     </div>
     <!-- 电脑导航 -->
@@ -87,6 +84,7 @@
 </template>
 
 <script setup>
+// import { isDark } from '~/composables/dark';
 import { ref, reactive } from 'vue'
 const phone = import.meta.env.VITE_APP_PHONE
 const email = import.meta.env.VITE_APP_EMAIL
@@ -166,9 +164,18 @@ function menuClick() {
   margin: 0 8px;
 }
 
+.header-top{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+
 /* 导航栏 */
 #header .header-nav {
   height: 110px;
+  margin-top: 20px;
 }
 
 /* 导航栏logo */
