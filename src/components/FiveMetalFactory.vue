@@ -52,10 +52,10 @@
       </section>
 
       <!-- 产品展示 -->
-      <section class="mb-12 sm:mb-16 product">
+      <section class="mb-12 sm:mb-16 product max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">我们的产品</h2>
         <Swiper
-          :slides-per-view="3"
+          :slides-per-view="2"
           :space-between="30"
           effect="coverflow"
           :centeredSlides="true"
@@ -68,24 +68,27 @@
             slideShadows: true
           }"
           :pagination="false"
-          class="swiper-container"
+          class="swiper-container w-full"
         >
           <SwiperSlide
             v-for="(product, index) in products"
             :key="index"
             class="bg-white rounded-lg shadow-md p-4 transition-transform duration-300 ease-in-out transform hover:scale-105"
           >
-            <img
-              :src="product.image"
-              alt="Product Image"
-              class="bg-gray-200 rounded-lg h-32 sm:h-48 mb-3 sm:mb-4 object-cover"
-            />
+            <div class="flex justifyCenter">
+              <img
+                :src="product.image"
+                alt="Product Image"
+                class="bg-gray-200 rounded-lg h-32 sm:h-56 mb-3 sm:mb-4 object-cover"
+              />
+            </div>
             <p class="text-center text-sm sm:text-base font-semibold">
               {{ product.name }}
             </p>
           </SwiperSlide>
         </Swiper>
       </section>
+
 
       <!-- 联系我们 -->
       <section class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl p-6 sm:p-8 text-white text-center">
@@ -133,9 +136,9 @@ const features = ref([
 ]);
 
 const products = ref([
-  { name: "铆钉", image: "/images/product.webp" },
+  { name: "铆钉", image: "/images/pro1.jpg" },
   { name: "螺钉", image: "/images/product.webp" },
-  { name: "螺栓", image: "/images/product.webp" },
+  { name: "螺栓", image: "/images/pro2.webp" },
   { name: "非标铆钉螺丝", image: "/images/product.webp" }
 ]);
 
@@ -170,5 +173,9 @@ const toggleMobileMenu = () => {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+}
+
+.justifyCenter{
+  justify-content: center;
 }
 </style>
