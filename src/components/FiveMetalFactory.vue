@@ -29,14 +29,30 @@
     <!-- 主要内容 -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <!-- 英雄区域 -->
-      <section class="text-center mb-12 sm:mb-16 relative p-4">
-        <img src="/images/backgroundImg.webp" alt="背景图" class="absolute inset-0 w-full h-full object-cover opacity-1">
+      <section class="text-center mb-8 sm:mb-16 relative p-4">
+        <img src="/images/product16.jpg" alt="背景图" class="absolute inset-0 w-full h-full object-cover opacity-1">
         <div class="relative z-10">
           <h1 class="text-4xl sm:text-5xl text-white font-bold mb-4">专业五金制造商</h1>
+          <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8">主营：直线轴承、螺钉、五金配件、铆钉、垫圈、螺栓、数控刀具</p>
           <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8">品质卓越 · 技术创新 · 服务至上</p>
           <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
             了解更多
           </button>
+        </div>
+      </section>
+
+       <!-- 公司简介 -->
+      <section id="关于我们" class="mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">公司简介</h2>
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="md:w-1/2 mb-6 md:mb-0">
+            <img src="/logo.jpeg" alt="公司大楼" class="rounded-lg shadow-lg w-full h-auto">
+          </div>
+          <div class="md:w-1/2 md:pl-8">
+            <p class="text-gray-700 mb-4 intro">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
+            <p class="text-gray-700 mb-4 intro">我们的产品广泛应用于汽车、电子、家电、建筑等多个行业，以其卓越的品质和创新的设计赢得了国内外客户的广泛认可和信赖。</p>
+            <p class="text-gray-700 intro">在{{ companyname }}，我们始终坚持"质量第一、客户至上"的经营理念，不断追求卓越，为客户创造更大的价值。</p>
+          </div>
         </div>
       </section>
 
@@ -47,7 +63,7 @@
             <component :is="feature.icon" class="w-8 h-8" />
           </div>
           <h3 class="text-lg sm:text-xl font-semibold mb-2">{{ feature.title }}</h3>
-          <p class="text-sm sm:text-base text-gray-600">{{ feature.desc }}</p>
+          <p class="text-lg sm:text-base text-gray-600">{{ feature.desc }}</p>
         </div>
       </section>
 
@@ -55,18 +71,10 @@
       <section class="mb-12 sm:mb-16 product max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">我们的产品</h2>
         <Swiper
-          :slides-per-view="2"
+          :slides-per-view="3"
           :space-between="30"
-          effect="coverflow"
           :centeredSlides="true"
           :loop="true"
-          :coverflow-effect="{
-            rotate: 60,
-            stretch: -20,
-            depth: 200,
-            modifier: 1,
-            slideShadows: true
-          }"
           :pagination="false"
           class="swiper-container w-full"
         >
@@ -80,6 +88,7 @@
                 :src="product.image"
                 alt="Product Image"
                 class="bg-gray-200 rounded-lg h-32 sm:h-56 mb-3 sm:mb-4 object-cover"
+                @click="openModal(product.image)"
               />
             </div>
             <p class="text-center text-sm sm:text-base font-semibold">
@@ -87,13 +96,40 @@
             </p>
           </SwiperSlide>
         </Swiper>
+
+        <!-- 模态弹窗 -->
+        <div v-if="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div class="bg-white w-full h-auto max-w-md md:max-w-2xl p-4 rounded-lg shadow-lg relative">
+            <img @click="closeModal" :src="selectedImage" alt="Product Image" class="h-full w-full object-contain" />
+          </div>
+        </div>
       </section>
 
+      <!-- 客户评价 -->
+      <section id="评价" class="mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">客户评价</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div v-for="(review, index) in customerReviews" :key="index" class="bg-white rounded-lg shadow-md p-6 transform transition-all duration-300 hover:scale-105">
+            <div class="flex items-center mb-4">
+              <img :src="review.avatar" :alt="review.name" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h3 class="font-semibold">{{ review.name }}</h3>
+                <p class="text-lg text-gray-600">{{ review.company }}</p>
+              </div>
+            </div>
+            <p class="text-gray-700">{{ review.comment }}</p>
+            <div class="mt-4 flex">
+              <star-icon v-for="star in 5" :key="star" :class="star <= review.rating ? 'text-yellow-400' : 'text-gray-300'" class="w-5 h-5" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- 联系我们 -->
       <section class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl p-6 sm:p-8 text-white text-center">
         <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">联系我们</h2>
-        <p class="text-base sm:text-xl mb-5 sm:mb-6">让我们为您的项目提供最佳五金解决方案</p>
+        <p class="text-base sm:text-2xl mb-3 sm:mb-3">让我们为您提供最佳五金解决方案</p>
+        <p class="text-base sm:text-2xl mb-3 sm:mb-3">公司地址：广东省东莞市虎门镇南栅富民路56号3栋104室</p>
         <a href="tel:+8617683892175" class="bg-white text-blue-600 hover:bg-gray-100 rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
           <phone-icon class="w-5 h-5 inline-block mr-2" />
           立即咨询
@@ -109,7 +145,7 @@
           <div class="flex space-x-4 sm:space-x-6">
             <a href="#" class="text-sm sm:text-base text-gray-400 hover:text-gray-500">关于我们</a>
             <a href="#" class="text-sm sm:text-base text-gray-400 hover:text-gray-500">隐私政策</a>
-            <a href="#" class="text-sm sm:text-base text-gray-400 hover:text-gray-500">联系我们</a>
+            <a href="tel:+8617683892175" class="text-sm sm:text-base text-gray-400 hover:text-gray-500">联系我们</a>
           </div>
         </div>
       </div>
@@ -118,7 +154,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.min.css'; // 引入样式
 import 'swiper/swiper.min.css';
@@ -136,12 +172,47 @@ const features = ref([
 ]);
 
 const products = ref([
-  { name: "铆钉", image: "/images/pro1.jpg" },
-  { name: "螺钉", image: "/images/product.webp" },
-  { name: "螺栓", image: "/images/pro2.webp" },
-  { name: "非标铆钉螺丝", image: "/images/product.webp" }
+  { name: "铆钉", image: "/images/product1.jpg" },
+  { name: "铆钉", image: "/images/product2.jpg" },
+  { name: "铆钉", image: "/images/product3.jpg" },
+  { name: "铆钉", image: "/images/product4.jpg" },
+  { name: "铆钉", image: "/images/product5.jpg" },
+  { name: "铆钉", image: "/images/product6.jpg" },
+  { name: "铆钉", image: "/images/product7.jpg" },
+  { name: "铆钉", image: "/images/product8.jpg" },
+  { name: "铆钉", image: "/images/product9.jpg" },
+  { name: "铆钉", image: "/images/product10.jpg" },
+  { name: "铆钉", image: "/images/product11.jpg" },
+  { name: "铆钉", image: "/images/product12.jpg" },
+  { name: "铆钉", image: "/images/product13.jpg" },
+  { name: "铆钉", image: "/images/product14.jpg" },
+  { name: "铆钉", image: "/images/product15.jpg" },
+  { name: "铆钉", image: "/images/product16.jpg" },
+  { name: "铆钉", image: "/images/product17.jpg" },
+  { name: "铆钉", image: "/images/product18.jpg" },
 ]);
 
+const customerReviews = ref([
+  { name: "张三", company: "ABC电子有限公司", comment: "锦名成五金的产品质量非常好，我们已经合作多年了，从未让我们失望。", rating: 5, avatar: "/images/avatar.jpg" },
+  { name: "李四", company: "XYZ汽车配件厂", comment: "他们的交付速度很快，产品精度高，非常适合我们的需求。", rating: 4, avatar: "/images/avatar.jpg" },
+  { name: "王五", company: "123家电制造商", comment: "客户服务很棒，技术支持团队总是能快速解决我们的问题。", rating: 5, avatar: "/images/avatar.jpg" }
+]);
+
+const isModalOpen = ref(false);
+const selectedImage = ref(null);
+
+const openModal = (image) => {
+  selectedImage.value = image;
+  isModalOpen.value = true;
+  document.body.style.overflow = 'hidden'; // 禁止背景滚动
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+  document.body.style.overflow = ''; // 恢复背景滚动
+};
+
+const form = ref({ name: '', email: '', message: '' });
 
 const isMobileMenuOpen = ref(false);
 
@@ -177,5 +248,15 @@ const toggleMobileMenu = () => {
 
 .justifyCenter{
   justify-content: center;
+}
+
+.intro{
+  text-indent: 2em;
+}
+
+@media (min-width: 768px) {
+  .max-w-md {
+    width: 50%; /* 在电脑端，图片占屏幕宽度的50% */
+  }
 }
 </style>
