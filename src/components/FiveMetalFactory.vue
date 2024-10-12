@@ -46,7 +46,7 @@
         <h2 class="text-2xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">公司简介</h2>
         <div class="flex flex-col md:flex-row items-center justify-between">
           <div class="md:w-1/2 mb-6 md:mb-0">
-            <img src="/logo.jpeg" alt="公司大楼" class="rounded-lg shadow-lg w-full h-auto">
+            <img src="/logo.jpeg" alt="公司大楼" class="rounded-lg shadow-lg w-full h-auto logoImg">
           </div>
           <div class="md:w-1/2 md:pl-8">
             <p class="text-gray-700 mb-4 intro">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
@@ -98,9 +98,10 @@
         </Swiper>
 
         <!-- 模态弹窗 -->
-        <div v-if="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div v-if="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+        @click="closeModal">
           <div class="bg-white w-full h-auto max-w-md md:max-w-2xl p-4 rounded-lg shadow-lg relative">
-            <img @click="closeModal" :src="selectedImage" alt="Product Image" class="h-full w-full object-contain" />
+            <img :src="selectedImage" alt="Product Image" class="h-full w-full object-contain" />
           </div>
         </div>
       </section>
@@ -257,6 +258,12 @@ const toggleMobileMenu = () => {
 @media (min-width: 768px) {
   .max-w-md {
     width: 50%; /* 在电脑端，图片占屏幕宽度的50% */
+  }
+}
+
+@media (max-width: 768px) {
+  .logoImg {
+    height: 128px;
   }
 }
 </style>
