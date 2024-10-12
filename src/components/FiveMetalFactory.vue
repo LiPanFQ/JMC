@@ -264,6 +264,7 @@ const toggleMobileMenu = () => {
 @media (max-width: 768px) {
   .logoImg {
     height: 128px;
+    width: 128px;
   }
 }
 </style>
