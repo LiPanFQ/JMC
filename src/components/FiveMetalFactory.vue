@@ -35,9 +35,9 @@
           <h1 class="text-4xl sm:text-5xl text-white font-bold mb-4">专业五金制造商</h1>
           <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8">主营：直线轴承、螺钉、五金配件、铆钉、垫圈、螺栓、数控刀具</p>
           <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8">品质卓越 · 技术创新 · 服务至上</p>
-          <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
-            了解更多
-          </button>
+          <a href="tel:+8617683892175" class="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+            立即咨询
+          </a>
         </div>
       </section>
 
@@ -72,7 +72,7 @@
         <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">我们的产品</h2>
         <Swiper
           :slides-per-view="3"
-          :space-between="30"
+          effect="coverflow"
           :centeredSlides="true"
           :loop="true"
           :pagination="false"
