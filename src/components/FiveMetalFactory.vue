@@ -68,7 +68,7 @@
       </section>
 
       <!-- 产品展示 -->
-      <section class="mb-12 sm:mb-16 product max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section class="mb-12 sm:mb-16 product max-w-screen-xl mx-auto sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">产品展示</h2>
         <Swiper
           :slides-per-view="2"
