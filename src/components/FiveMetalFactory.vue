@@ -30,7 +30,7 @@
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <!-- 英雄区域 -->
       <section class="text-center mb-8 sm:mb-16 relative p-4">
-        <img src="/images/product16.jpg" alt="背景图" class="absolute inset-0 w-full h-full object-cover opacity-1">
+        <img src="/images/product16.jpg" alt="背景图" class="rounded-3xl absolute inset-0 w-full h-full object-cover opacity-1">
         <div class="relative z-10">
           <h1 class="text-4xl sm:text-5xl text-white font-bold mb-4">专业五金制造商</h1>
           <p class="text-lg sm:text-xl text-white mb-6 sm:mb-8">主营：直线轴承、螺钉、五金配件、铆钉、垫圈、螺栓、数控刀具</p>
@@ -46,7 +46,7 @@
         <h2 class="text-2xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">公司简介</h2>
         <div class="flex flex-col md:flex-row items-center justify-between">
           <div class="md:w-1/2 mb-6 md:mb-0">
-            <img src="/logo.jpeg" alt="公司大楼" class="rounded-lg shadow-lg w-full h-auto logoImg">
+            <img src="/logo.jpeg" alt="公司大楼" class="rounded-3xl shadow-lg w-full h-auto logoImg">
           </div>
           <div class="md:w-1/2 md:pl-8">
             <p class="text-gray-700 mb-4 intro">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
@@ -58,7 +58,7 @@
 
       <!-- 产品特点 -->
       <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
-        <div v-for="(feature, index) in features" :key="index" class="bg-white rounded-2xl shadow-lg p-6 text-center">
+        <div v-for="(feature, index) in features" :key="index" class="bg-white rounded-3xl shadow-lg p-6 text-center">
           <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-in-out transform hover:scale-110 hover:rotate-12">
             <component :is="feature.icon" class="w-8 h-8" />
           </div>
@@ -69,11 +69,10 @@
 
       <!-- 产品展示 -->
       <section class="mb-12 sm:mb-16 product max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">我们的产品</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">产品展示</h2>
         <Swiper
-          :slides-per-view="3"
+          :slides-per-view="2"
           effect="coverflow"
-          :centeredSlides="true"
           :loop="true"
           :pagination="false"
           class="swiper-container w-full"
@@ -87,11 +86,11 @@
               <img
                 :src="product.image"
                 alt="Product Image"
-                class="bg-gray-200 rounded-lg h-32 sm:h-56 mb-3 sm:mb-4 object-cover"
+                class="rounded-3xl object-cover h-40 sm:h-48 w-full"
                 @click="openModal(product.image)"
               />
             </div>
-            <p class="text-center text-sm sm:text-base font-semibold">
+            <p class="text-center text-lg font-semibold">
               {{ product.name }}
             </p>
           </SwiperSlide>
@@ -100,7 +99,7 @@
         <!-- 模态弹窗 -->
         <div v-if="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
         @click="closeModal">
-          <div class="bg-white w-full h-auto max-w-md md:max-w-2xl p-4 rounded-lg shadow-lg relative">
+          <div class="bg-white w-full h-auto max-w-md md:max-w-2xl rounded-lg shadow-lg relative">
             <img :src="selectedImage" alt="Product Image" class="h-full w-full object-contain" />
           </div>
         </div>
@@ -110,7 +109,7 @@
       <section id="评价" class="mb-12 sm:mb-16">
         <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">客户评价</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="(review, index) in customerReviews" :key="index" class="bg-white rounded-lg shadow-md p-6 transform transition-all duration-300 hover:scale-105">
+          <div v-for="(review, index) in customerReviews" :key="index" class="bg-white rounded-3xl shadow-md p-6 transform transition-all duration-300 hover:scale-105">
             <div class="flex items-center mb-4">
               <img :src="review.avatar" :alt="review.name" class="w-12 h-12 rounded-full mr-4">
               <div>
@@ -119,9 +118,6 @@
               </div>
             </div>
             <p class="text-gray-700">{{ review.comment }}</p>
-            <div class="mt-4 flex">
-              <star-icon v-for="star in 5" :key="star" :class="star <= review.rating ? 'text-yellow-400' : 'text-gray-300'" class="w-5 h-5" />
-            </div>
           </div>
         </div>
       </section>
@@ -155,7 +151,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onBeforeMount, onMounted, ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.min.css'; // 引入样式
 import 'swiper/swiper.min.css';
@@ -237,7 +233,7 @@ const toggleMobileMenu = () => {
 }
 
 .swiper-slide-active {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 .product{
@@ -267,4 +263,5 @@ const toggleMobileMenu = () => {
     width: 128px;
   }
 }
+
 </style>
