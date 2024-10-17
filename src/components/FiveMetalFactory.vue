@@ -59,36 +59,80 @@
     <!-- 主要内容 -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- 产品展示 -->
-    <section id="products" class="">
-        <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">热门产品</h2>
+      <section id="products" class="py-8 sm:py-12">
+        <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">产品案例</h2>
         <div class="relative overflow-hidden rounded-3xl shadow-lg">
-          <div class="flex transition-transform duration-300 ease-in-out" 
-               :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
-            <div v-for="product in products" :key="product.id" class="w-full flex-shrink-0">
+          <swiper
+            :slides-per-view="1"
+            :space-between="0"
+            :loop="true"
+            :pagination="{ clickable: true, el: '.swiper-pagination' }"
+            :navigation="{
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next'
+            }"
+            :autoplay="3000"
+            class="mySwiper"
+            @swiper="onSwiper"
+          >
+            <swiper-slide v-for="product in products" :key="product.id">
               <div class="relative">
                 <img :src="product.image" :alt="product.name" class="w-full h-64 sm:h-80 md:h-96 object-cover">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6">
                   <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">{{ product.name }}</h3>
                   <p class="text-lg sm:text-xl text-gray-200 mb-3">{{ product.description }}</p>
-                  <button class="bg-white text-blue-500 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm font-medium hover:bg-blue-50 transition duration-300">
+                  <!-- <button class="bg-white text-blue-500 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm font-medium hover:bg-blue-50 transition duration-300">
                     查看详情
-                  </button>
+                  </button> -->
                 </div>
               </div>
+            </swiper-slide>
+          </swiper>
+          <div @click="prevSlide" class="swiper-button-prev absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-white p-1 sm:p-2 rounded-full hover:bg-white/50 transition duration-300 z-10">
+            <ChevronLeft class="w-8 h-8 sm:w-8 sm:h-8" />
+          </div>
+          <div @click="nextSlide" class="swiper-button-next absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-white p-1 sm:p-2 rounded-full hover:bg-white/50 transition duration-300 z-10">
+            <ChevronRight class="w-8 h-8 sm:w-8 sm:h-8" />
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <!-- 特色服务 -->
+      <section id="services" class="py-8 sm:py-12 bg-gray-50 rounded-3xl">
+        <div class="container mx-auto">
+          <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">我们的服务</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div 
+              v-for="(service,index) in services"
+              :key="service.title" 
+              class="bg-white rounded-3xl shadow-lg p-6 sm:p-8 transition duration-300 hover:shadow-xl flex flex-col items-center text-center"
+              :class="{ 'animate-bounce-in': isIntersecting }"
+              :style="{ transitionDelay: `${index * 1000}ms` }"
+              ref="serviceCards">
+              <div class="text-blue-500 mb-4">
+                <component :is="service.icon" class="w-10 h-10 sm:w-12 sm:h-12" />
+              </div>
+              <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">{{ service.title }}</h3>
+              <p class="text-lg sm:text-xl text-gray-600">{{ service.description }}</p>
             </div>
           </div>
-          <button @click="prevSlide" class="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-white p-1 sm:p-2 rounded-full hover:bg-white/50 transition duration-300">
-            <ChevronLeft class="w-4 h-4 sm:w-6 sm:h-6" />
-          </button>
-          <button @click="nextSlide" class="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-white p-1 sm:p-2 rounded-full hover:bg-white/50 transition duration-300">
-            <ChevronRight class="w-4 h-4 sm:w-6 sm:h-6" />
-          </button>
-          <div class="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            <button v-for="(_, index) in products" :key="index" 
-                    @click="currentSlide = index"
-                    class="w-2 h-2 rounded-full transition-all duration-300 focus:outline-none"
-                    :class="currentSlide === index ? 'bg-white w-3' : 'bg-white/50'">
-            </button>
+        </div>
+      </section>
+
+      <!-- 客户评价 -->
+      <section id="reviews" class="py-8 sm:py-12">
+        <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">客户评价</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div v-for="(review, index) in customerReviews" :key="index" class="bg-white rounded-3xl shadow-md p-5 sm:p-6 transform transition-all duration-300 hover:scale-105">
+            <div class="flex items-center mb-4">
+              <img :src="review.avatar" :alt="review.name" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4">
+              <div>
+                <h3 class="font-semibold text-lg sm:text-xl">{{ review.name }}</h3>
+                <p class="text-lg sm:text-xl text-gray-600">{{ review.company }}</p>
+              </div>
+            </div>
+            <p class="text-lg sm:text-xl text-gray-700">{{ review.comment }}</p>
           </div>
         </div>
       </section>
@@ -102,40 +146,6 @@
             <p class="text-lg sm:text-xl text-gray-700 mb-4 intro">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
             <p class="text-lg sm:text-xl text-gray-700 mb-4 intro">我们的产品广泛应用于汽车、电子、家电、建筑等多个行业，以其卓越的品质和创新的设计赢得了国内外客户的广泛认可和信赖。</p>
             <p class="text-lg sm:text-xl text-gray-700 intro">在{{ companyname }}，我们始终坚持"质量第一、客户至上"的经营理念，不断追求卓越，为客户创造更大的价值。</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 特色服务 -->
-      <section id="services" class="py-8 sm:py-12 bg-gray-50 rounded-3xl">
-        <div class="container mx-auto">
-          <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">我们的服务</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div v-for="service in services" :key="service.title" class="bg-white rounded-3xl shadow-lg p-6 sm:p-8 transition duration-300 hover:shadow-xl flex flex-col items-center text-center">
-              <div class="text-blue-500 mb-4">
-                <component :is="service.icon" class="w-10 h-10 sm:w-12 sm:h-12" />
-              </div>
-              <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">{{ service.title }}</h3>
-              <p class="text-lg sm:text-xl text-gray-600">{{ service.description }}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- 客户评价 -->
-      <section id="reviews" class="py-8 sm:py-12">
-        <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">客户评价</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="(review, index) in customerReviews" :key="index" class="bg-white rounded-3xl shadow-md p-5 sm:p-6 transform transition-all duration-300 hover:scale-105">
-            <div class="flex items-center mb-4">
-              <img :src="review.avatar" :alt="review.name" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4">
-              <div>
-                <h3 class="font-semibold text-sm sm:text-base">{{ review.name }}</h3>
-                <p class="text-xs sm:text-sm text-gray-600">{{ review.company }}</p>
-              </div>
-            </div>
-            <p class="text-lg sm:text-xl text-gray-700">{{ review.comment }}</p>
           </div>
         </div>
       </section>
@@ -171,12 +181,19 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { Wrench, Truck, ShieldCheck, Phone as PhoneIcon, Menu as MenuIcon, X, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-vue-next';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.min.css'; // 引入样式
+import 'swiper/swiper.min.css';
+import SwiperCore, { EffectCoverflow, Pagination } from 'swiper';
+
+// 初始化 Swiper 模块
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 const companyname = import.meta.env.VITE_APP_COMPANYNAME;
 
 const mainProducts = [
-  '直线轴承', '螺钉', '五金配件', '铆钉',
-  '垫圈', '螺栓', '数控刀具'
+  '直线轴承', '五金配件', '数控刀具', '螺钉', '铆钉',
+  '垫圈', '螺栓'
 ];
 
 const services = [
@@ -198,8 +215,8 @@ const services = [
 ];
 
 const products = ref([
-  { id: 1, name: '铆钉', description: '高品质不锈钢螺丝，适用于各种精密设备', image: '/images/product17.jpg' },
-  { id: 2, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product2.jpg' },
+  { id: 1, name: '铆钉', description: '高品质不锈钢螺丝，适用于各种精密设备', image: '/images/product2.jpg' },
+  { id: 2, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product11.jpg' },
   { id: 3, name: '铆钉', description: '多功能五金配件套装，满足各种家居需求', image: '/images/product3.jpg' },
   { id: 4, name: '铆钉', description: '时尚美观的不锈钢把手，适用于各种门窗', image: '/images/product4.jpg' },
   { id: 5, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product5.jpg' },
@@ -224,37 +241,48 @@ const customerReviews = ref([
 ]);
 
 const isMobileMenuOpen = ref(false);
-const currentSlide = ref(0);
-const autoPlayInterval = ref(null);
+
+const serviceCards = ref([]);
+const isIntersecting = ref(false);
+const swiperInstance = ref(null);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
 
-const nextSlide = () => {
-  currentSlide.value = (currentSlide.value + 1) % products.value.length;
+const onSwiper = (swiper) => {
+  swiperInstance.value = swiper;
 };
 
 const prevSlide = () => {
-  currentSlide.value = (currentSlide.value - 1 + products.value.length) % products.value.length;
+  if (swiperInstance.value) {
+    swiperInstance.value.slidePrev();
+  }
 };
 
-const startAutoPlay = () => {
-  autoPlayInterval.value = setInterval(nextSlide, 5000);
-};
-
-const stopAutoPlay = () => {
-  if (autoPlayInterval.value) {
-    clearInterval(autoPlayInterval.value);
+const nextSlide = () => {
+  if (swiperInstance.value) {
+    swiperInstance.value.slideNext();
   }
 };
 
 onMounted(() => {
-  startAutoPlay();
-});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        isIntersecting.value = true;
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
 
-onUnmounted(() => {
-  stopAutoPlay();
+  serviceCards.value.forEach(card => {
+    if (card) {
+      observer.observe(card);
+    }
+  });
 });
 </script>
 
@@ -270,7 +298,7 @@ onUnmounted(() => {
   animation-fill-mode: both;
 }
 .animate-fade-in {
-  animation: fadeIn 1.5s ease-out;
+  animation: fadeIn 1s ease-out;
   animation-fill-mode: both;
 }
 @keyframes fadeInUp {
@@ -305,5 +333,57 @@ onUnmounted(() => {
     height: 128px;
     width: 128px;
   }
+}
+
+/* Swiper 样式覆盖 */
+:deep(.swiper-button-prev),
+:deep(.swiper-button-next) {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+}
+
+:deep(.swiper-button-prev:after),
+:deep(.swiper-button-next:after) {
+  /* font-size: 18px; */
+  display: none;
+}
+
+:deep(.swiper-pagination-bullet) {
+  background: white;
+  opacity: 0.5;
+}
+
+:deep(.swiper-pagination-bullet-active) {
+  opacity: 1;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 2s ease-out forwards;
 }
 </style>
