@@ -342,6 +342,7 @@ onMounted(() => {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  top: calc(50% + 20px);
   color: white;
 }
 
