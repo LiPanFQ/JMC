@@ -64,14 +64,17 @@
         <div class="relative overflow-hidden rounded-3xl shadow-lg">
           <swiper
             :slides-per-view="1"
-            :space-between="0"
             :loop="true"
-            :pagination="{ clickable: true, el: '.swiper-pagination' }"
+            :pagination="false"
+            effect="cube"
             :navigation="{
               prevEl: '.swiper-button-prev',
               nextEl: '.swiper-button-next'
             }"
-            :autoplay="3000"
+            :autoplay="{
+              delay: 3000,
+              disableOnInteraction: false
+            }"
             class="mySwiper"
             @swiper="onSwiper"
           >
@@ -184,10 +187,10 @@ import { Wrench, Truck, ShieldCheck, Phone as PhoneIcon, Menu as MenuIcon, X, Ch
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.min.css'; // 引入样式
 import 'swiper/swiper.min.css';
-import SwiperCore, { EffectCoverflow, Pagination } from 'swiper';
+import SwiperCore, { Autoplay,EffectCoverflow, Pagination  } from 'swiper';
 
 // 初始化 Swiper 模块
-SwiperCore.use([EffectCoverflow, Pagination]);
+SwiperCore.use([EffectCoverflow, Pagination,Autoplay]);
 
 const companyname = import.meta.env.VITE_APP_COMPANYNAME;
 
