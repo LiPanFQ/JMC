@@ -110,8 +110,8 @@
               v-for="(service,index) in services"
               :key="service.title" 
               class="bg-white rounded-3xl shadow-lg p-6 sm:p-8 transition duration-300 hover:shadow-xl flex flex-col items-center text-center"
-              :class="{ 'animate-bounce-in': isIntersecting }"
-              :style="{ transitionDelay: `${index * 1000}ms` }"
+              :class="{ 'animate-bounce-in': isIntersectingServices[index] }"
+              :style="{ transitionDelay: `${index * 100}ms` }"
               ref="serviceCards">
               <div class="text-blue-500 mb-4">
                 <component :is="service.icon" class="w-10 h-10 sm:w-12 sm:h-12" />
@@ -127,7 +127,12 @@
       <section id="reviews" class="py-8 sm:py-12">
         <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">客户评价</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="(review, index) in customerReviews" :key="index" class="bg-white rounded-3xl shadow-md p-5 sm:p-6 transform transition-all duration-300 hover:scale-105">
+          <div v-for="(review, index) in customerReviews"
+           :key="index" 
+           class="bg-white rounded-3xl shadow-md p-5 sm:p-6 transform transition-all duration-300 hover:scale-105"
+           :class="{ 'animate-bounce-in': isIntersectingClients[index] }"
+            :style="{ transitionDelay: `${index * 100}ms` }"
+            ref="clientCards">
             <div class="flex items-center mb-4">
               <img :src="review.avatar" :alt="review.name" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4">
               <div>
@@ -245,8 +250,11 @@ const customerReviews = ref([
 
 const isMobileMenuOpen = ref(false);
 
+// 跟踪每个卡片的状态
 const serviceCards = ref([]);
-const isIntersecting = ref(false);
+const clientCards = ref([]);
+const isIntersectingServices = ref([]); // 跟踪每个服务卡片的状态
+const isIntersectingClients = ref([]);  // 跟踪每个客户卡片的状态 // 用数组跟踪每个卡片的状态
 const swiperInstance = ref(null);
 
 const toggleMobileMenu = () => {
@@ -270,21 +278,34 @@ const nextSlide = () => {
 };
 
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
+  // 服务卡片的 IntersectionObserver
+  // const serviceObserver = new IntersectionObserver((entries) => {
+  //   entries.forEach((entry) => {
+  //     const index = Array.from(serviceCards.value).indexOf(entry.target);
+  //     if (entry.isIntersecting && index !== -1) {
+  //       isIntersectingServices.value[index] = true;
+  //       serviceObserver.unobserve(entry.target); // 一旦可见，停止观察该元素
+  //     }
+  //   });
+  // }, { threshold: 0.1 });
+
+  // serviceCards.value.forEach((card) => {
+  //   if (card) serviceObserver.observe(card);
+  // });
+
+  // 客户评价卡片的 IntersectionObserver
+  const clientObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        isIntersecting.value = true;
-        observer.unobserve(entry.target);
+      const index = Array.from(clientCards.value).indexOf(entry.target);
+      if (entry.isIntersecting && index !== -1) {
+        isIntersectingClients.value[index] = true;
+        clientObserver.unobserve(entry.target); // 一旦可见，停止观察该元素
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
 
-  serviceCards.value.forEach(card => {
-    if (card) {
-      observer.observe(card);
-    }
+  clientCards.value.forEach((card) => {
+    if (card) clientObserver.observe(card);
   });
 });
 </script>
