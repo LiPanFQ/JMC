@@ -40,10 +40,12 @@
     <section class="relative bg-gradient-to-b from-blue-100 to-white pt-16 pb-12 sm:pt-24 sm:pb-16 overflow-hidden">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div class="mx-auto max-w-3xl">
-          <h2 class="text-3xl sm:text-5xl font-bold mb-6 sm:mb-8 text-gray-800 animate-fade-in-up animation-delay-300">
+          <!-- animate-fade-in-up animation-delay-300 -->
+          <h2 class="text-3xl sm:text-5xl font-bold mb-6 sm:mb-8 text-gray-800">
             为您提供优质的五金产品和定制服务
           </h2>
-          <div class="mt-4 sm:mt-6 animate-fade-in-up animation-delay-600">
+          <!-- animate-fade-in-up animation-delay-600 -->
+          <div class="mt-4 sm:mt-6">
             <h3 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">主营产品</h3>
             <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 text-lg sm:text-xl md:text-2xl text-gray-600 justify-center">
               <li v-for="product in mainProducts" :key="product" class="flex items-center justify-center">
@@ -57,7 +59,7 @@
     </section>
 
     <!-- 主要内容 -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white">
       <!-- 产品展示 -->
       <section id="products" class="py-8 sm:py-12">
         <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">产品案例</h2>
@@ -106,7 +108,8 @@
         <div class="container mx-auto">
           <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">我们的服务</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div 
+            <div
+              v-slide
               v-for="(service,index) in services"
               :key="service.title" 
               class="bg-white rounded-3xl shadow-lg p-6 sm:p-8 transition duration-300 hover:shadow-xl flex flex-col items-center text-center"
@@ -127,7 +130,9 @@
       <section id="reviews" class="py-8 sm:py-12">
         <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">客户评价</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="(review, index) in customerReviews"
+          <div 
+            v-slide
+            v-for="(review, index) in customerReviews"
            :key="index" 
            class="bg-white rounded-3xl shadow-md p-5 sm:p-6 transform transition-all duration-300 hover:scale-105"
            :class="{ 'animate-bounce-in': isIntersectingClients[index] }"
@@ -146,7 +151,7 @@
       </section>
 
       <!-- 公司简介 -->
-      <section id="about" class="py-6 sm:py-10">
+      <section id="about" class="py-6 sm:py-10" v-slide>
         <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">公司简介</h2>
         <div class="md:flex items-start">
           <img src="/logo.jpeg" alt="公司大楼" class="float-left mr-6 mb-4 rounded-3xl shadow-lg w-32 h-32 md:w-48 md:h-48 object-cover">
@@ -159,7 +164,7 @@
       </section>
 
       <!-- 联系我们 -->
-      <section id="contact" class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl p-6 sm:p-8 text-white text-center mb-12 sm:mb-16">
+      <section v-slide id="contact" class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl p-6 sm:p-8 text-white text-center mb-12 sm:mb-16">
         <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">联系我们</h2>
         <p class="text-xl sm:text-2xl mb-4 sm:mb-5">让我们为您提供最佳五金解决方案</p>
         <p class="text-lg sm:text-xl mb-6 sm:mb-8">公司地址：广东省东莞市虎门镇南栅富民路56号3栋104室</p>
@@ -294,19 +299,19 @@ onMounted(() => {
   // });
 
   // 客户评价卡片的 IntersectionObserver
-  const clientObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const index = Array.from(clientCards.value).indexOf(entry.target);
-      if (entry.isIntersecting && index !== -1) {
-        isIntersectingClients.value[index] = true;
-        clientObserver.unobserve(entry.target); // 一旦可见，停止观察该元素
-      }
-    });
-  }, { threshold: 0.1 });
+  // const clientObserver = new IntersectionObserver((entries) => {
+  //   entries.forEach((entry) => {
+  //     const index = Array.from(clientCards.value).indexOf(entry.target);
+  //     if (entry.isIntersecting && index !== -1) {
+  //       isIntersectingClients.value[index] = true;
+  //       clientObserver.unobserve(entry.target); // 一旦可见，停止观察该元素
+  //     }
+  //   });
+  // }, { threshold: 0.1 });
 
-  clientCards.value.forEach((card) => {
-    if (card) clientObserver.observe(card);
-  });
+  // clientCards.value.forEach((card) => {
+  //   if (card) clientObserver.observe(card);
+  // });
 });
 </script>
 
