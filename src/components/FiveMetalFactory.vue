@@ -1,14 +1,14 @@
 <template>
   <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white font-sans">
     <!-- 导航栏 -->
-    <nav class="sticky top-0 bg-white/70 backdrop-blur-lg border-b border-gray-200 z-50">
+    <!-- <nav class="sticky top-0 bg-white/70 backdrop-blur-lg border-b border-gray-200 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <span class="text-xl sm:text-2xl font-semibold text-gray-900">{{ companyname }}</span>
           <div class="hidden sm:flex space-x-4">
-            <a href="#products" class="px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 transition duration-300">产品</a>
-            <a href="#about" class="px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 transition duration-300">关于我们</a>
-            <a href="#contact" class="px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 transition duration-300">联系方式</a>
+            <a class="px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 transition duration-300">产品</a>
+            <a class="px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 transition duration-300">关于我们</a>
+            <a href="tel:+8617683892175" class="px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 transition duration-300">联系方式</a>
           </div>
           <button class="sm:hidden text-gray-600" @click="toggleMobileMenu">
             <MenuIcon v-if="!isMobileMenuOpen" class="w-6 h-6" />
@@ -16,7 +16,7 @@
           </button>
         </div>
       </div>
-    </nav>
+    </nav> -->
 
     <!-- 移动端菜单 -->
     <transition
@@ -29,9 +29,9 @@
     >
       <div v-if="isMobileMenuOpen" class="sm:hidden bg-white border-b border-gray-200 absolute w-full z-40">
         <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href="#products" class="block px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition duration-300" @click="toggleMobileMenu">产品</a>
-          <a href="#about" class="block px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition duration-300" @click="toggleMobileMenu">关于我们</a>
-          <a href="#contact" class="block px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition duration-300" @click="toggleMobileMenu">联系方式</a>
+          <a class="block px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition duration-300" @click="toggleMobileMenu">产品</a>
+          <a class="block px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition duration-300" @click="toggleMobileMenu">关于我们</a>
+          <a href="tel:+8617683892175" class="block px-3 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition duration-300" @click="toggleMobileMenu">联系方式</a>
         </div>
       </div>
     </transition>
@@ -61,7 +61,7 @@
     <!-- 主要内容 -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white">
       <!-- 产品展示 -->
-      <section id="products" class="py-8 sm:py-12">
+      <section id="products" class="">
         <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">产品案例</h2>
         <div class="relative overflow-hidden rounded-3xl shadow-lg">
           <swiper
@@ -181,9 +181,9 @@
         <div class="flex flex-col sm:flex-row justify-between items-center">
           <span class="text-gray-500 text-base sm:text-lg mb-3 sm:mb-0">&copy; 2024 {{ companyname }}. 版权所有</span>
           <div class="flex space-x-4 sm:space-x-6">
-            <a href="#about" class="text-base sm:text-lg text-gray-400 hover:text-gray-600 transition duration-300">关于我们</a>
-            <a href="#" class="text-base sm:text-lg text-gray-400 hover:text-gray-600 transition duration-300">隐私政策</a>
-            <a href="#contact" class="text-base sm:text-lg text-gray-400 hover:text-gray-600 transition duration-300">联系我们</a>
+            <a class="text-base sm:text-lg text-gray-400 hover:text-gray-600 transition duration-300">关于我们</a>
+            <a class="text-base sm:text-lg text-gray-400 hover:text-gray-600 transition duration-300">隐私政策</a>
+            <a class="text-base sm:text-lg text-gray-400 hover:text-gray-600 transition duration-300">联系我们</a>
           </div>
         </div>
       </div>
