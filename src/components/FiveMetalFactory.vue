@@ -230,21 +230,16 @@ const services = [
 const products = ref([
   { id: 1, name: '铆钉', description: '高品质不锈钢螺丝，适用于各种精密设备', image: '/images/product2.jpg' },
   { id: 2, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product11.jpg' },
-  { id: 3, name: '铆钉', description: '多功能五金配件套装，满足各种家居需求', image: '/images/product3.jpg' },
   { id: 4, name: '铆钉', description: '时尚美观的不锈钢把手，适用于各种门窗', image: '/images/product4.jpg' },
   { id: 5, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product5.jpg' },
-  { id: 6, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product6.jpg' },
   { id: 7, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product7.jpg' },
   { id: 8, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product8.jpg' },
   { id: 9, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product9.jpg' },
-  { id: 10, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product10.jpg' },
   { id: 11, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product11.jpg' },
   { id: 12, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product12.jpg' },
   { id: 13, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product13.jpg' },
-  { id: 14, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product14.jpg' },
   { id: 15, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product15.jpg' },
   { id: 16, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product16.jpg' },
-  { id: 17, name: '铆钉', description: '耐用的重型铰链，适合工业门窗使用', image: '/images/product17.jpg' },
 ]);
 
 const customerReviews = ref([
