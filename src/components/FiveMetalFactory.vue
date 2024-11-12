@@ -47,7 +47,7 @@
           <!-- animate-fade-in-up animation-delay-600 -->
           <div class="mt-4 sm:mt-6">
             <h3 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">主营产品</h3>
-            <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 text-lg sm:text-xl md:text-2xl text-gray-600 justify-center">
+            <ul class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 text-lg sm:text-xl md:text-2xl text-gray-600 justify-center">
               <li v-for="product in mainProducts" :key="product" class="flex items-center justify-center">
                 <CheckCircle2 class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-blue-500" /> {{ product }}
               </li>
@@ -205,8 +205,8 @@ SwiperCore.use([EffectCoverflow, Pagination,Autoplay]);
 const companyname = import.meta.env.VITE_APP_COMPANYNAME;
 
 const mainProducts = [
-  '直线轴承', '五金配件', '数控刀具', '螺钉', '铆钉',
-  '垫圈', '螺栓'
+  '直线轴承', '五金配件', '数控刀具', '螺钉、螺栓', '铆钉',
+  '垫圈'
 ];
 
 const services = [
