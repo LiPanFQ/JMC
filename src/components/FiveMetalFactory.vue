@@ -112,7 +112,7 @@
               v-slide
               v-for="(service,index) in services"
               :key="service.title" 
-              class="bg-white rounded-3xl shadow-lg p-6 sm:p-8 transition duration-300 hover:shadow-xl flex flex-col items-center text-center"
+              class="bg-white rounded-3xl shadow-lg p-6 sm:p-8 transition duration-300 hover:shadow-xl flex flex-col items-center text-center bgColor"
               :class="{ 'animate-bounce-in': isIntersectingServices[index] }"
               :style="{ transitionDelay: `${index * 100}ms` }"
               ref="serviceCards">
@@ -120,7 +120,7 @@
                 <component :is="service.icon" class="w-10 h-10 sm:w-12 sm:h-12" />
               </div>
               <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">{{ service.title }}</h3>
-              <p class="text-lg sm:text-xl text-gray-600">{{ service.description }}</p>
+              <p class="text-lg sm:text-xl text-gray-600" style="line-height: 20px">{{ service.description }}</p>
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@
                 <p class="text-lg sm:text-xl text-gray-600">{{ review.company }}</p>
               </div>
             </div>
-            <p class="text-lg sm:text-xl text-gray-700">{{ review.comment }}</p>
+            <p class="text-lg sm:text-xl text-gray-700" style="line-height: 20px">{{ review.comment }}</p>
           </div>
         </div>
       </section>
@@ -154,11 +154,11 @@
       <section id="about" class="py-6 sm:py-10" v-slide>
         <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">公司简介</h2>
         <div class="md:flex items-start">
-          <img src="/logo.jpeg" alt="公司大楼" class="float-left mr-6 mb-4 rounded-3xl shadow-lg w-32 h-32 md:w-48 md:h-48 object-cover">
+          <img src="/logo.png" alt="公司" class="float-left mr-6 mb-4 rounded-3xl w-32 h-32 md:w-48 md:h-48 object-cover">
           <div>
-            <p class="text-lg sm:text-xl text-gray-700 mb-4 intro">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
-            <p class="text-lg sm:text-xl text-gray-700 mb-4 intro">我们的产品广泛应用于汽车、电子、家电、建筑等多个行业，以其卓越的品质和创新的设计赢得了国内外客户的广泛认可和信赖。</p>
-            <p class="text-lg sm:text-xl text-gray-700 intro">在{{ companyname }}，我们始终坚持"质量第一、客户至上"的经营理念，不断追求卓越，为客户创造更大的价值。</p>
+            <p class="text-lg sm:text-xl text-gray-700 intro" style="line-height: 20px">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
+            <p class="text-lg sm:text-xl text-gray-700 intro" style="line-height: 20px">我们的产品广泛应用于汽车、电子、家电、建筑等多个行业，以其卓越的品质和创新的设计赢得了国内外客户的广泛认可和信赖。</p>
+            <p class="text-lg sm:text-xl text-gray-700 intro" style="line-height: 20px">在{{ companyname }}，我们始终坚持"质量第一、客户至上"的经营理念，不断追求卓越，为客户创造更大的价值。</p>
           </div>
         </div>
       </section>
@@ -168,10 +168,13 @@
         <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">联系我们</h2>
         <p class="text-xl sm:text-2xl mb-4 sm:mb-5">让我们为您提供最佳五金解决方案</p>
         <p class="text-lg sm:text-xl mb-6 sm:mb-8">公司地址：广东省东莞市虎门镇南栅富民路56号3栋104室</p>
-        <a href="tel:+8617683892175" class="inline-flex items-center bg-white text-blue-600 hover:bg-gray-100 rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
-          <PhoneIcon class="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
-          立即咨询
-        </a>
+        <div class="flex flex-col items-center">
+          <a href="tel:+8617683892175" class="inline-flex items-center bg-white text-blue-600 hover:bg-gray-100 rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105 mb-4">
+            <PhoneIcon class="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+            立即咨询
+          </a>
+          <img src="/wxCode.jpg" alt="微信二维码" class="w-32 h-32 rounded-lg shadow-lg">
+        </div>
       </section>
     </main>
 
@@ -357,6 +360,10 @@ onMounted(() => {
     height: 128px;
     width: 128px;
   }
+}
+
+.bgColor{
+  background-color: #EAF2FE;
 }
 
 /* Swiper 样式覆盖 */

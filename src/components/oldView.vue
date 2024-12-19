@@ -46,7 +46,7 @@
           <h2 class="text-2xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">公司简介</h2>
           <div class="flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2 mb-6 md:mb-0">
-              <img src="/logo.jpeg" alt="公司大楼" class="rounded-lg shadow-lg w-full h-auto logoImg">
+              <img src="/logo.png" alt="公司大楼" class="rounded-lg shadow-lg w-full h-auto logoImg">
             </div>
             <div class="md:w-1/2 md:pl-8">
               <p class="text-gray-700 mb-4 intro">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>

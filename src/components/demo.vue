@@ -141,7 +141,7 @@
       <section id="about" class="py-6 sm:py-10">
         <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">公司简介</h2>
         <div class="md:flex items-start">
-          <img src="/logo.jpeg" alt="公司大楼" class="float-left mr-6 mb-4 rounded-3xl shadow-lg w-32 h-32 md:w-48 md:h-48 object-cover">
+          <img src="/logo.png" alt="公司大楼" class="float-left mr-6 mb-4 rounded-3xl shadow-lg w-32 h-32 md:w-48 md:h-48 object-cover">
           <div>
             <p class="text-lg sm:text-xl text-gray-700 mb-4 intro">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
             <p class="text-lg sm:text-xl text-gray-700 mb-4 intro">我们的产品广泛应用于汽车、电子、家电、建筑等多个行业，以其卓越的品质和创新的设计赢得了国内外客户的广泛认可和信赖。</p>
