@@ -55,7 +55,6 @@
           </div>
         </div>
       </div>
-      <div class="absolute bottom-0 right-0 w-full md:w-1/2 h-full bg-contain bg-no-repeat bg-right-bottom opacity-10 sm:opacity-20 animate-fade-in" style="background-image: url('/placeholder.svg?height=600&width=600');"></div>
     </section>
 
     <!-- 主要内容 -->
