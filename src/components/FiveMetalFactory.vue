@@ -81,7 +81,7 @@
           >
             <swiper-slide v-for="product in products" :key="product.id">
               <div class="relative">
-                <img :src="product.image" :alt="product.name" class="w-full h-64 sm:h-80 md:h-96 object-cover">
+                <img :src="product.image" :alt="product.name" class="w-full h-72 sm:h-80 md:h-96 object-cover">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6">
                   <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">{{ product.name }}</h3>
                   <p class="text-lg sm:text-xl text-gray-200 mb-3">{{ product.description }}</p>
