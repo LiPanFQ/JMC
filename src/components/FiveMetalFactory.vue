@@ -42,12 +42,12 @@
         <div class="mx-auto max-w-3xl">
           <!-- animate-fade-in-up animation-delay-300 -->
           <h2 class="text-3xl sm:text-5xl font-bold mb-6 sm:mb-8 text-gray-800">
-            为您提供优质的五金产品和定制服务
+            专注五金，品质至上
           </h2>
           <!-- animate-fade-in-up animation-delay-600 -->
           <div class="mt-4 sm:mt-6">
             <h3 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">主营产品</h3>
-            <ul class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 text-lg sm:text-xl md:text-2xl text-gray-600 justify-center">
+            <ul class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 text-xl sm:text-xl md:text-2xl text-gray-600 justify-center">
               <li v-for="product in mainProducts" :key="product" class="flex items-center justify-center">
                 <CheckCircle2 class="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-blue-500" /> {{ product }}
               </li>
@@ -83,8 +83,8 @@
               <div class="relative">
                 <img :src="product.image" :alt="product.name" class="w-full h-72 sm:h-80 md:h-96 object-cover">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6">
-                  <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">{{ product.name }}</h3>
-                  <p class="text-lg sm:text-xl text-gray-200 mb-3">{{ product.description }}</p>
+                  <h3 class="text-xl sm:text-xl font-semibold mb-2 text-white">{{ product.name }}</h3>
+                  <p class="text-xl sm:text-xl text-gray-200 mb-3">{{ product.description }}</p>
                   <!-- <button class="bg-white text-blue-500 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm font-medium hover:bg-blue-50 transition duration-300">
                     查看详情
                   </button> -->
@@ -118,8 +118,8 @@
               <div class="text-blue-500 mb-4">
                 <component :is="service.icon" class="w-10 h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 class="text-lg sm:text-xl font-semibold mb-3 text-gray-800">{{ service.title }}</h3>
-              <p class="text-lg sm:text-xl text-gray-600" style="line-height: 20px">{{ service.description }}</p>
+              <h3 class="text-xl sm:text-xl font-semibold mb-3 text-gray-800">{{ service.title }}</h3>
+              <p class="text-xl sm:text-xl text-gray-600" style="line-height: 20px">{{ service.description }}</p>
             </div>
           </div>
         </div>
@@ -140,24 +140,31 @@
             <div class="flex items-center mb-4">
               <img :src="review.avatar" :alt="review.name" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4">
               <div>
-                <h3 class="font-semibold text-lg sm:text-xl">{{ review.name }}</h3>
-                <p class="text-lg sm:text-xl text-gray-600">{{ review.company }}</p>
+                <h3 class="font-semibold text-xl sm:text-xl">{{ review.name }}</h3>
+                <p class="text-xl sm:text-xl text-gray-600">{{ review.company }}</p>
               </div>
             </div>
-            <p class="text-lg sm:text-xl text-gray-700" style="line-height: 20px">{{ review.comment }}</p>
+            <p class="text-xl sm:text-xl text-gray-700" style="line-height: 20px">{{ review.comment }}</p>
           </div>
         </div>
       </section>
 
       <!-- 公司简介 -->
       <section id="about" class="py-6 sm:py-10" v-slide>
-        <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">公司简介</h2>
+        <h2 class="text-2xl sm:text-4xl font-bold text-center text-gray-800 mb-6 sm:mb-8">关于我们</h2>
         <div class="md:flex items-start">
           <img src="/logo.png" alt="公司" class="float-left mr-6 mb-4 rounded-3xl w-32 h-32 md:w-48 md:h-48 object-cover">
           <div>
-            <p class="text-lg sm:text-xl text-gray-700 intro" style="line-height: 20px">{{ companyname }}成立于2018年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们拥有先进的生产设备和专业的技术团队，致力于为客户提供优质、可靠的五金解决方案。</p>
-            <p class="text-lg sm:text-xl text-gray-700 intro" style="line-height: 20px">我们的产品广泛应用于汽车、电子、家电、建筑等多个行业，以其卓越的品质和创新的设计赢得了国内外客户的广泛认可和信赖。</p>
-            <p class="text-lg sm:text-xl text-gray-700 intro" style="line-height: 20px">在{{ companyname }}，我们始终坚持"质量第一、客户至上"的经营理念，不断追求卓越，为客户创造更大的价值。</p>
+            <p class="text-xl sm:text-xl text-gray-700 intro" style="line-height: 1.8">
+              {{ companyname }}专注五金行业三十年，是一家专业从事高品质五金制品研发、生产和销售的现代化企业。我们配备先进的生产设备和经验丰富的技术团队，致力于为客户提供可靠的五金解决方案。
+            </p>
+            <p class="text-xl sm:text-xl text-gray-700 intro" style="line-height: 1.8">
+              产品广泛应用于汽车、电子、家电、建筑等多个行业，凭借卓越的品质和创新的设计，深受国内外客户的信赖。
+            </p>
+            <p class="text-xl sm:text-xl text-gray-700 intro" style="line-height: 1.8">
+              我们坚持“质量第一、客户至上”的经营理念，不断追求卓越，为客户创造更大的价值。
+            </p>
+
           </div>
         </div>
       </section>
@@ -166,9 +173,9 @@
       <section v-slide id="contact" class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-3xl p-6 sm:p-8 text-white text-center mb-12 sm:mb-16">
         <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">联系我们</h2>
         <p class="text-xl sm:text-2xl mb-4 sm:mb-5">让我们为您提供最佳五金解决方案</p>
-        <p class="text-lg sm:text-xl mb-6 sm:mb-8">公司地址：广东省东莞市虎门镇南栅富民路56号3栋104室</p>
+        <p class="text-xl sm:text-xl mb-6 sm:mb-8">公司地址：广东省东莞市虎门镇南栅富民路56号3栋104室</p>
         <div class="flex flex-col items-center">
-          <a href="tel:+8617683892175" class="inline-flex items-center bg-white text-blue-600 hover:bg-gray-100 rounded-full px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105 mb-4">
+          <a href="tel:+8617683892175" class="inline-flex items-center bg-white text-blue-600 hover:bg-gray-100 rounded-full px-6 py-2 sm:px-8 sm:py-3 text-xl sm:text-lg transition-transform duration-300 ease-in-out transform hover:scale-105 mb-4">
             <PhoneIcon class="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
             立即咨询
           </a>
